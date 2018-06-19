@@ -1,8 +1,6 @@
 package ru.android.kira.phonebook;
 
-import android.net.Uri;
 
-import java.net.URI;
 
 public class Contact {
     int id;

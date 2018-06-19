@@ -18,8 +18,6 @@ public class NewContact extends AppCompatActivity {
     private TextInputEditText phoneInput;
     private ImageView imageView;
     private Uri selectedImage = null;
-//    Button save;
-//    private Contact contact;
     private BDHelper bdHelper;
     static final int GALLERY_REQUEST = 1;
 
@@ -58,26 +56,21 @@ public class NewContact extends AppCompatActivity {
         Bitmap bitmap = null;
          imageView = (ImageView) findViewById(R.id.photoInput);
 
-
         switch(requestCode) {
             case GALLERY_REQUEST:
                 if(resultCode == RESULT_OK){
                     selectedImage = imageReturnedIntent.getData();
                     imageView.setImageURI(null);
                     imageView.setImageURI(selectedImage);
-
                 }
         }
     }
-
 
     public void insertContact(View view){
         String name = nameInput.getText().toString().trim();
         String family = familyInput.getText().toString().trim();
         String phone = phoneInput.getText().toString().trim();
         String photo = selectedImage.toString();
-
-
         bdHelper = new BDHelper(this);
         bdHelper.addContact(new Contact(name, family, phone, photo));
         Intent intent = new Intent(NewContact.this, MainActivity.class);

@@ -5,10 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
+
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BDHelper extends SQLiteOpenHelper {
 
@@ -47,13 +46,12 @@ public class BDHelper extends SQLiteOpenHelper {
         values.put(FAMILY, contact.family);
         values.put(PHONE, contact.phone);
         values.put(PHOTO, contact.photo);
-
         db.insert(TABLE, null, values);
         db.close();
     }
 
     public ArrayList<Contact> getAll(){
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        ArrayList<Contact> contacts = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ TABLE, null);
         if (cursor.moveToFirst()) {
@@ -64,7 +62,6 @@ public class BDHelper extends SQLiteOpenHelper {
                 contact.setFamily(cursor.getString(2));
                 contact.setPhone(cursor.getString(3));
                 contact.setPhoto(cursor.getString(4));
-
                 contacts.add(contact);
             } while (cursor.moveToNext());
         }

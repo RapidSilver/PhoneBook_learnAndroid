@@ -60,7 +60,6 @@ public class MyAdapter extends BaseAdapter {
             ((ImageView) view.findViewById(R.id.photo)).setImageURI(Uri.parse(c.photo));
         }
 
-
         return view;
     }
 }
